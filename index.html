@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lessons</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        /* Your existing CSS styles here */
+        body {
+            background-color: white;
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333; /* Set text color to a dark gray */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 10px;
+            font-size: 24px; /* Increased font size for schedule content */
+        }
+
+        /* Add CSS to underline the week and day of the week */
+        .underline {
+            text-decoration: underline;
+        }
+
+        @media screen and (min-width: 600px) {
+            /* Adjust styles for larger screens (e.g., computer screens) */
+            body {
+                max-width: 600px;
+                margin: auto;
+                font-size: 60px; /* Increased font size for larger screens */
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+        // Get the current date
+        var currentDate = new Date();
+
+        // Get the day of the week (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
+        var currentDay = currentDate.getDay();
+
+        // Get the week number for the current date
+        var currentWeekNumber = getWeekNumber(currentDate);
+
+        // Determine if it's Week 1 or Week 2 based on the week number
+        var currentWeek = currentWeekNumber % 2 === 0 ? 2 : 1;
+
+        // Example schedule data for Week 1 and Week 2
+        var scheduleWeek1 = {
+            "Monday": "English, Maths, I.T., Science, Drama.",
+            "Tuesday": "History, Maths, English, Geography, P.E..",
+            "Wednesday": "Food & Nutrition, Science, English, Maths, History.",
+            "Thursday": "P.E., P.R., Maths, Science, French.",
+            "Friday": "Art, English, Geography, Maths, Science."
+        };
+
+        var scheduleWeek2 = {
+            "Monday": "English, PSE, Welsh, P.E., Drama.",
+            "Tuesday": "Geography, Music, D.T., Science, Spanish.",
+            "Wednesday": "Maths, Welsh, Library, Science, D.T.",
+            "Thursday": "Art, P.R., Music, Welsh, History.",
+            "Friday": "Science, Maths, English, French, I.T."
+        };
+
+        // Determine the schedule to display based on the current week
+        var currentSchedule = currentWeek === 1 ? scheduleWeek1 : scheduleWeek2;
+
+        // Display the schedule for the current week (similar to the previous code)
+        var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        var day = dayNames[currentDay];
+        var lessons = currentSchedule[day].split(', ');
+
+        document.write("<span class='underline'>Week " + currentWeek + "</span><br>");
+        document.write("<span class='underline'>" + day + "</span><br><br>");
+
+        for (var i = 0; i < lessons.length; i++) {
+            document.write("Lesson " + (i + 1) + ": " + lessons[i] + "<br>");
+        }
+
+        // Function to calculate the week number for a given date
+        function getWeekNumber(date) {
+            var oneJan = new Date(date.getFullYear(), 0, 1);
+            var millisecsInDay = 86400000; // Number of milliseconds in a day (24 hours)
+            return Math.ceil(((date - oneJan) / millisecsInDay + oneJan.getDay() + 1) / 7);
+        }
+    </script>
+</body>
+</html>
