@@ -54,28 +54,28 @@
         // Get the day of the week (0 - Sunday, 1 - Monday, ..., 6 - Saturday)
         var currentDay = currentDate.getDay();
 
-        // Get the week number for the current date
-        var currentWeekNumber = getWeekNumber(currentDate);
+              // Get the week number for the current date
+              var currentWeekNumber = getWeekNumber(currentDate);
 
-        // Determine if it's Week 1 or Week 2 based on the week number
-        var currentWeek = currentWeekNumber % 2 === 0 ? 1 : 2;
+              // Determine if it's Week 1 or Week 2 based on the week number
+              var currentWeek = currentWeekNumber % 2 === 0 ? 2 : 1;
 
-        // Example schedule data for Week 1 and Week 2
-        var scheduleWeek1 = {
-            "Monday": "English, Maths, I.T., Science, Drama.",
-            "Tuesday": "History, Maths, English, Geography, P.E..",
-            "Wednesday": "Food & Nutrition, Science, English, Maths, History.",
-            "Thursday": "P.E., P.R., Maths, Science, French.",
-            "Friday": "Art, English, Geography, Maths, Science."
-        };
+              // Example schedule data for Week 1 and Week 2
+              var scheduleWeek1 = {
+                  "Monday": "Drama, P.E., Music, Maths, Science.",
+                  "Tuesday": "Art, English, D.T., Maths, Science.",
+                  "Wednesday": "Art, French, Science, English, I.T.",
+                  "Thursday": "History, I.T., Welsh, Maths, English.",
+                  "Friday": "P.E., Drama, Music, D.T., History."
+              };
 
-        var scheduleWeek2 = {
-            "Monday": "English, PSE, Welsh, P.E., Drama.",
-            "Tuesday": "Geography, Music, D.T., Science, Spanish.",
-            "Wednesday": "Maths, Welsh, Library, Science, D.T.",
-            "Thursday": "Art, P.R., Music, Welsh, History.",
-            "Friday": "Science, Maths, English, French, I.T."
-        };
+              var scheduleWeek2 = {
+                  "Monday": "Geography, Spanish, English, Science, P.E.",
+                  "Tuesday": "Food & Nutrition, Geography, Science, P.R., Maths.",
+                  "Wednesday": "P.R., History, Science, English, Maths.",
+                  "Thursday": "English, Geography, Maths, Science, Welsh.",
+                  "Friday": "English, Welsh, PSE, Maths, French."
+              };
 
         // Determine the schedule to display based on the current week
         var currentSchedule = currentWeek === 1 ? scheduleWeek1 : scheduleWeek2;
