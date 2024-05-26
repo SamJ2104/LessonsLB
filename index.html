@@ -124,7 +124,7 @@
               var currentWeekNumber = getWeekNumber(currentDate);
 
               // Determine if it's Week 1 or Week 2 based on the week number
-              var currentWeek = currentWeekNumber % 2 === 0 ? 1 : 2;
+              var currentWeek = currentWeekNumber % 2 === 0 ? 2 : 1;
 
               // Example schedule data for Week 1 and Week 2
               var scheduleWeek1 = {
@@ -160,7 +160,7 @@
 
         // Function to calculate the week number for a given date
         function getWeekNumber(date) {
-            var oneJan = new Date(date.getFullYear(), 1, 0);
+            var oneJan = new Date(date.getFullYear(), 0, 1);
             var millisecsInDay = 86400000; // Number of milliseconds in a day (24 hours)
             return Math.ceil(((date - oneJan) / millisecsInDay + oneJan.getDay() + 1) / 7);
         }
