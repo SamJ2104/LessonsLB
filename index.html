@@ -50,7 +50,7 @@
               function updateSchedule(selectedDateObj) {
                   var selectedDay = selectedDateObj.getDay();
                   var selectedWeekNumber = getWeekNumber(selectedDateObj);
-                  var selectedWeek = selectedWeekNumber % 2 === 0 ? 1 : 2;
+                  var selectedWeek = selectedWeekNumber % 2 === 0 ? 2 : 1;
                   var selectedSchedule = selectedWeek === 1 ? scheduleWeek1 : scheduleWeek2;
                   var selectedDayName = dayNames[selectedDay];
                   var selectedLessons = selectedSchedule[selectedDayName].split(', ');
